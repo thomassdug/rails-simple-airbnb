@@ -1,14 +1,27 @@
-<h1>All my flats</h1>
-<p><%= link_to "Add a flat", new_flat_path %></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between mx-5">
+  <a class="navbar-brand" href="#">Simple Airbnb</a>
+  <p class="my-2 my-sm-0"><%= link_to "Add a flat", new_flat_path %></p>
+</nav>
 
 <div class="container">
-  <% @flats.each do |flat| %>
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= flat.name %></h5>
-        <p class="card-text"><%= flat.address %></p>
+  <h1>All my flats</h1>
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-sm-4">
+        <div class="card", style="width: 18rem;">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= flat.name %></h5>
+            <p class="card-text"><%= flat.address %></p>
+            <p><%= link_to "More info", flat_path(flat) %>
+              <%= link_to "Edit this flat", edit_flat_path(flat) %>
+               <%= link_to "Delete", flat_path(flat),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
